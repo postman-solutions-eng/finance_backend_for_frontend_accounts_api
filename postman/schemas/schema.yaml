@@ -1,0 +1,153 @@
+---
+openapi: 3.0.3
+info:
+  title: Accounts
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: "{{url}}"
+paths:
+  /accounts/create:
+    post:
+      summary: Create
+      description: Create
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                holder:
+                  type: string
+                  example: "{{customerId}}"
+                type:
+                  type: string
+                  example: "{{$randomBankAccountName}}"
+            example:
+              holder: "{{customerId}}"
+              type: "{{$randomBankAccountName}}"
+      responses:
+        "200":
+          description: ""
+  "/accounts/{accountNumber}/overview":
+    get:
+      summary: Overview
+      description: Overview
+      operationId: overview
+      responses:
+        "200":
+          description: ""
+    parameters:
+      - name: accountNumber
+        in: path
+        required: true
+        schema:
+          type: string
+  "/accounts/{accountNumber}/statement/date":
+    get:
+      tags:
+        - Statement
+      summary: Date
+      description: Date
+      operationId: date
+      requestBody:
+        content:
+          application/form-urlencoded:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: string
+                  example: "{{$randomDatePast}}"
+                to:
+                  type: string
+                  example: "{{$randomDateRecent}}"
+            example:
+              from: "{{$randomDatePast}}"
+              to: "{{$randomDateRecent}}"
+      responses:
+        "200":
+          description: 200 OK
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: "*"
+            Connection:
+              schema:
+                type: string
+                example: close
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+            Date:
+              schema:
+                type: string
+                example: "Mon, 14 Jun 2021 14:30:25 GMT"
+            ETag:
+              schema:
+                type: string
+                example: "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Vary:
+              schema:
+                type: string
+                example: Accept-Encoding
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: "120"
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: "119"
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                example: "1623681083"
+            x-srv-span:
+              schema:
+                type: string
+                example: v=1;s=210e5b055e5bd71e
+            x-srv-trace:
+              schema:
+                type: string
+                example: v=1;t=d33d68b932344fce
+          content:
+            text/plain:
+              examples:
+                200 OK:
+                  value: "{\n    \"period\": {\n        \"from\": \"{{$randomDatePast}}\",\n        \"to\": \"{{$randomDateRecent}}\"\n    },\n    \"balance\": {\n        \"opening\": {{$randomPrice}},\n        \"closing\": {{$randomPrice}}\n    },\n    \"money\": {\n        \"in\": {{$randomPrice}},\n        \"out\": {{$randomPrice}}\n    },\n    \"transactions\": [\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        }\n    ]\n}"
+    parameters:
+      - name: accountNumber
+        in: path
+        required: true
+        schema:
+          type: string
+  "/accounts/{accountNumber}/statement/latest":
+    get:
+      tags:
+        - Statement
+      summary: Latest
+      description: Latest
+      operationId: latest
+      responses:
+        "200":
+          description: ""
+    parameters:
+      - name: accountNumber
+        in: path
+        required: true
+        schema:
+          type: string
+tags:
+  - name: Statement
