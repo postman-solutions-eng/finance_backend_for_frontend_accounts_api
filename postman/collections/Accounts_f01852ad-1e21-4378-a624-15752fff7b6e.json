@@ -1,0 +1,607 @@
+{
+    "info": {
+        "_postman_id": "2d0efe79-30b2-4d9c-ae5e-4bf89c1e2287",
+        "name": "Accounts",
+        "description": "Endpoints for frontend implementations when it comes to the account space.\n\nResponses can be visualized to give a clearer picture on what responses provide.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Statement",
+            "item": [
+                {
+                    "name": "Latest",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "4b5faec3-070f-48f6-8916-e21a6c2fe695",
+                                "exec": [
+                                    "const res = pm.response.json();",
+                                    "",
+                                    "pm.test(\"Status code is 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "const template = `",
+                                    "    <style>",
+                                    "        .summary ul {",
+                                    "            list-style-type: none;",
+                                    "        }",
+                                    "        .summary div {",
+                                    "            display: inline-block;",
+                                    "            width: 33%;",
+                                    "        }",
+                                    "    </style>",
+                                    "    <link rel=\"stylesheet\" href=\"https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css\">",
+                                    "    <script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
+                                    "    <script src=\"https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js\"></script>",
+                                    "    <h1>PM Credit Union</h1>",
+                                    "    <div class=\"summary\">",
+                                    "        <div>",
+                                    "            <ul>",
+                                    "                <li><strong>Statement: </strong> {{res.period}}</li>",
+                                    "                <li><strong>Opening balance: </strong> \\${{res.balance.opening}}</li>",
+                                    "                <li><strong>Closing balance: </strong> \\${{res.balance.closing}}</li>",
+                                    "            </ul>",
+                                    "        </div>",
+                                    "        <div>",
+                                    "            <ul>",
+                                    "                <li><strong>Account: </strong> {{accountNumber}}</li>",
+                                    "                <li><strong>Money in: </strong> \\${{res.money.in}}</li>",
+                                    "                <li><strong>Money out: </strong> \\${{res.money.out}}</li>",
+                                    "            </ul>",
+                                    "        </div>",
+                                    "    </div>",
+                                    "    <div class=\"table\">",
+                                    "        <table>",
+                                    "            <thead>",
+                                    "                <tr>",
+                                    "                    <th>Date</th>",
+                                    "                    <th>Type</th>",
+                                    "                    <th>Description</th>",
+                                    "                    <th>Amount</th>",
+                                    "                    <th>Balance</th>",
+                                    "                </tr>",
+                                    "            </thead>",
+                                    "            <tbody>",
+                                    "            {{#each res.transactions}}",
+                                    "                <tr>",
+                                    "                    <td>{{date}}</td>",
+                                    "                    <td>{{type}}</td>",
+                                    "                    <td>{{description}}</td>",
+                                    "                    <td>{{amount}}</td>",
+                                    "                    <td>{{balance}}</td>",
+                                    "                </tr>",
+                                    "            {{/each}}",
+                                    "            </tbody>",
+                                    "        </table>",
+                                    "    </div>",
+                                    "",
+                                    "    <script>",
+                                    "        $('table').DataTable()",
+                                    "    </script>",
+                                    "`",
+                                    "const accountNumber = pm.globals.get('accountNumber');",
+                                    "pm.visualizer.set(template, { res, accountNumber });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "618c59ec-89e6-413f-8d17-6e42abfdab88",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{url}}/accounts/{{accountNumber}}/statement/latest",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "accounts",
+                                "{{accountNumber}}",
+                                "statement",
+                                "latest"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "id": "48baf59e-e38a-49f3-85b4-e3993d5b3323",
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/accounts/{{accountNumber}}/statement/latest",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "accounts",
+                                        "{{accountNumber}}",
+                                        "statement",
+                                        "latest"
+                                    ]
+                                }
+                            },
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n    \"period\": \"latest\",\n    \"balance\": {\n        \"opening\": {{$randomPrice}},\n        \"closing\": {{$randomPrice}}\n    },\n    \"money\": {\n        \"in\": {{$randomPrice}},\n        \"out\": {{$randomPrice}}\n    },\n    \"transactions\": [\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        }\n    ]\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Date",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "9310934b-dc76-44a1-8cab-0d2ab7983fdf",
+                                "exec": [
+                                    "const res = pm.response.json();",
+                                    "",
+                                    "pm.test(\"Status code is 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "const template = `",
+                                    "    <style>",
+                                    "        .summary ul {",
+                                    "            list-style-type: none;",
+                                    "        }",
+                                    "        .summary div {",
+                                    "            display: inline-block;",
+                                    "            width: 33%;",
+                                    "        }",
+                                    "    </style>",
+                                    "    <link rel=\"stylesheet\" href=\"https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css\">",
+                                    "    <script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
+                                    "    <script src=\"https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js\"></script>",
+                                    "    <h1>PM Credit Union</h1>",
+                                    "    <div class=\"summary\">",
+                                    "        <div>",
+                                    "            <ul>",
+                                    "                <li><strong>Statement: </strong> {{res.period}}</li>",
+                                    "                <li><strong>Opening balance: </strong> \\${{res.balance.opening}}</li>",
+                                    "                <li><strong>Closing balance: </strong> \\${{res.balance.closing}}</li>",
+                                    "            </ul>",
+                                    "        </div>",
+                                    "        <div>",
+                                    "            <ul>",
+                                    "                <li><strong>Account: </strong> {{accountNumber}}</li>",
+                                    "                <li><strong>Money in: </strong> \\${{res.money.in}}</li>",
+                                    "                <li><strong>Money out: </strong> \\${{res.money.out}}</li>",
+                                    "            </ul>",
+                                    "        </div>",
+                                    "    </div>",
+                                    "    <div class=\"table\">",
+                                    "        <table>",
+                                    "            <thead>",
+                                    "                <tr>",
+                                    "                    <th>Date</th>",
+                                    "                    <th>Type</th>",
+                                    "                    <th>Description</th>",
+                                    "                    <th>Amount</th>",
+                                    "                    <th>Balance</th>",
+                                    "                </tr>",
+                                    "            </thead>",
+                                    "            <tbody>",
+                                    "            {{#each res.transactions}}",
+                                    "                <tr>",
+                                    "                    <td>{{date}}</td>",
+                                    "                    <td>{{type}}</td>",
+                                    "                    <td>{{description}}</td>",
+                                    "                    <td>{{amount}}</td>",
+                                    "                    <td>{{balance}}</td>",
+                                    "                </tr>",
+                                    "            {{/each}}",
+                                    "            </tbody>",
+                                    "        </table>",
+                                    "    </div>",
+                                    "",
+                                    "    <script>",
+                                    "        $('table').DataTable()",
+                                    "    </script>",
+                                    "`",
+                                    "const accountNumber = pm.globals.get('accountNumber');",
+                                    "pm.visualizer.set(template, { res, accountNumber });"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "13b88741-feda-4bf8-8246-0e81b3afda55",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "from",
+                                    "value": "{{$randomDatePast}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "to",
+                                    "value": "{{$randomDateRecent}}",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{url}}/accounts/{{accountNumber}}/statement/date",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "accounts",
+                                "{{accountNumber}}",
+                                "statement",
+                                "date"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "id": "68e34401-98fa-4a72-8871-048f8904aa77",
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "urlencoded",
+                                    "urlencoded": [
+                                        {
+                                            "key": "from",
+                                            "value": "{{$randomDatePast}}",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "to",
+                                            "value": "{{$randomDateRecent}}",
+                                            "type": "text"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{url}}/accounts/{{accountNumber}}/statement/date",
+                                    "host": [
+                                        "{{url}}"
+                                    ],
+                                    "path": [
+                                        "accounts",
+                                        "{{accountNumber}}",
+                                        "statement",
+                                        "date"
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Mon, 14 Jun 2021 14:30:25 GMT"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json; charset=utf-8"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "nginx"
+                                },
+                                {
+                                    "key": "x-srv-trace",
+                                    "value": "v=1;t=d33d68b932344fce"
+                                },
+                                {
+                                    "key": "x-srv-span",
+                                    "value": "v=1;s=210e5b055e5bd71e"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "X-RateLimit-Limit",
+                                    "value": "120"
+                                },
+                                {
+                                    "key": "X-RateLimit-Remaining",
+                                    "value": "119"
+                                },
+                                {
+                                    "key": "X-RateLimit-Reset",
+                                    "value": "1623681083"
+                                },
+                                {
+                                    "key": "ETag",
+                                    "value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+                                },
+                                {
+                                    "key": "Vary",
+                                    "value": "Accept-Encoding"
+                                },
+                                {
+                                    "key": "Content-Encoding",
+                                    "value": "gzip"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n    \"period\": {\n        \"from\": \"{{$randomDatePast}}\",\n        \"to\": \"{{$randomDateRecent}}\"\n    },\n    \"balance\": {\n        \"opening\": {{$randomPrice}},\n        \"closing\": {{$randomPrice}}\n    },\n    \"money\": {\n        \"in\": {{$randomPrice}},\n        \"out\": {{$randomPrice}}\n    },\n    \"transactions\": [\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        }\n    ]\n}"
+                        }
+                    ]
+                }
+            ],
+            "id": "ccbfe97b-b842-4045-9ea3-5a1d37af7672"
+        },
+        {
+            "name": "Create",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "5fde5b3b-0d64-4728-a042-6972c2714a21",
+                        "exec": [
+                            "const res = pm.response.json();",
+                            "",
+                            "pm.globals.set(\"accountNumber\", res.details.domestic.account);"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "id": "b4ab1dcc-955d-4ac1-8e3d-95b18bde6e16",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"type\": \"{{$randomBankAccountName}}\",\n    \"holder\": \"{{customerId}}\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{url}}/accounts/create",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "accounts",
+                        "create"
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "id": "276c6c87-cd30-473e-9b5d-a6594f3077f5",
+                    "name": "200 OK",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"type\": \"{{$randomBankAccountName}}\",\n    \"holder\": {\n        \"name\": {\n            \"first\": \"{{$randomFirstName}}\",\n            \"middle\": \"{{$randomFirstName}}\",\n            \"last\": \"{{$randomLastName}}\"\n        },\n        \"dob\": \"{{$randomDatePast}}\",\n        \"address\": {\n            \"street\": \"{{$randomStreetAddress}}\",\n            \"city\": \"{{$randomCity}}\",\n            \"country\": \"{{$randomCountry}}\"\n        }\n    }\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/accounts/create",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "accounts",
+                                "create"
+                            ]
+                        }
+                    },
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json",
+                            "description": "",
+                            "type": "text"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"type\": \"{{$randomBankAccountName}}\",\n    \"details\": {\n        \"domestic\": {\n            \"account\": \"{{$randomBankAccount}}\",\n            \"routing\": \"{{$randomBankAccount}}\"\n        },\n        \"international\": {\n            \"bic\": \"{{$randomBankAccountBic}}\",\n            \"iban\": \"{{$randomBankAccountIban}}\"\n        }\n    }\n}"
+                }
+            ]
+        },
+        {
+            "name": "Overview",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "15f1ecfa-0bad-4dc2-a6cc-53188a399f51",
+                        "exec": [
+                            "const res = pm.response.json();",
+                            "",
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "const template = `",
+                            "    <style>",
+                            "        .account-overview {",
+                            "            width: 80%;",
+                            "            margin: 0 auto;",
+                            "            border: 1px solid black;",
+                            "            padding: 10px;",
+                            "        }",
+                            "",
+                            "        .account-overview div {",
+                            "            display: inline-block;",
+                            "            width: 31%;",
+                            "            background: #efefef;",
+                            "            padding: 20px;",
+                            "            box-sizing: border-box;",
+                            "            margin-right: 10px;",
+                            "        }",
+                            "",
+                            "        .account-overview p {",
+                            "            line-height: 0px;",
+                            "            word-wrap: wrap;",
+                            "        }",
+                            "",
+                            "        .account-overview ul {",
+                            "            list-style-type: none;",
+                            "        }",
+                            "    </style>",
+                            "    <div class=\"account-overview\">",
+                            "        <h3>PM Credit Union</h3>",
+                            "        <ul>",
+                            "            <li><strong>Account type:</strong> {{res.type}}</li>",
+                            "            <li><strong>Interest rate:</strong> {{res.interestRate}}%</li>",
+                            "            <li><strong>Last statement date:</strong> {{res.lastStatementDate}}</li>",
+                            "        </ul>",
+                            "        <div>",
+                            "            <h5>Balance</h5>",
+                            "            <p><strong>Available:</strong> \\${{res.balance.available}}</p>",
+                            "            <p><strong>Present:</strong> \\${{res.balance.present}}</p>",
+                            "        </div>",
+                            "        <div>",
+                            "            <h5>Domestic details</h5>",
+                            "            <p><strong>Account No:</strong> {{res.details.domestic.account}}</p>",
+                            "            <p><strong>Routing No:</strong> {{res.details.domestic.routing}}</p>",
+                            "        </div>",
+                            "        <div>",
+                            "            <h5>Intl details</h5>",
+                            "            <p><strong>BIC:</strong> {{res.details.international.bic}}</p>",
+                            "            <p><strong>IBAN:</strong> {{res.details.international.bic}}</p>",
+                            "        </div>",
+                            "    </div>",
+                            "",
+                            "",
+                            "`",
+                            "pm.visualizer.set(template, { res });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "id": "5efaff90-f078-4410-bb4d-e5a16548ac89",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/accounts/{{accountNumber}}/overview",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "accounts",
+                        "{{accountNumber}}",
+                        "overview"
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "id": "686494d8-14aa-47db-9154-ac2310529c2d",
+                    "name": "200 OK",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{url}}/accounts/{{accountNumber}}/overview",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "accounts",
+                                "{{accountNumber}}",
+                                "overview"
+                            ]
+                        }
+                    },
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json",
+                            "description": "",
+                            "type": "text"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"type\": \"{{$randomBankAccountName}}\",\n    \"balance\": {\n        \"available\": {{$randomPrice}},\n        \"present\": {{$randomPrice}}\n    },\n    \"details\": {\n        \"domestic\": {\n            \"account\": \"{{$randomBankAccount}}\",\n            \"routing\": \"{{$randomBankAccount}}\"\n        },\n        \"international\": {\n            \"bic\": \"{{$randomBankAccountBic}}\",\n            \"iban\": \"{{$randomBankAccountIban}}\"\n        }\n    },\n    \"interestRate\": 0.01,\n    \"lastStatementDate\": \"{{$randomDateRecent}}\"\n}"
+                }
+            ]
+        }
+    ]
+}
