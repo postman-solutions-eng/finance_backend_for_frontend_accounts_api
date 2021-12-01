@@ -1,0 +1,19 @@
+{
+	"id": "1cd1937d-65f1-48ac-a5ca-2512ce7c4b32",
+	"name": "Account (mock)",
+	"values": [
+		{
+			"key": "url2",
+			"value": "https://6cd87b50-0472-4e1a-a1a0-ea87b362df04.mock.pstmn.io",
+			"enabled": false
+		},
+		{
+			"key": "url",
+			"value": "https://354b9d62-bd7e-40d7-863c-7b02c5b83585.mock.pstmn.io/",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2021-12-01T22:47:35.835Z",
+	"_postman_exported_using": "Postman/9.3.0-211129-1230"
+}
