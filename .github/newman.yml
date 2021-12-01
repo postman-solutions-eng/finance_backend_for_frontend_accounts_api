@@ -1,0 +1,22 @@
+name: Newman Run
+
+on:
+  pull_request:
+    branches:
+    - master
+  workflow_dispatch:
+    inputs:
+      newman:
+        description: 'Run'
+        required: false
+        default: 'Run action'
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: matt-ball/newman-action@master
+        with:
+          collection: postman/collections/Accounts_f01852ad-1e21-4378-a624-15752fff7b6e.json
+          environment: postman/environments/accounts.json
