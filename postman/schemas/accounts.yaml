@@ -6,6 +6,8 @@ info:
   contact: {}
 servers:
   - url: "{{url}}"
+security:
+    - testAuth : []
 paths:
   /accounts/create:
     post:
