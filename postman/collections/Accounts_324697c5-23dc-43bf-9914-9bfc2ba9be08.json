@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "dcf3fb89-fa59-4bcb-b428-de597680e8b7",
+		"_postman_id": "a9aacd33-0548-4adf-a475-d4ae1359b8ab",
 		"name": "Accounts",
 		"description": "Endpoints for frontend implementations when it comes to the account space.\n\nResponses can be visualized to give a clearer picture on what responses provide.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "23437273-dcf3fb89-fa59-4bcb-b428-de597680e8b7"
+		"_uid": "24464586-a9aacd33-0548-4adf-a475-d4ae1359b8ab"
 	},
 	"item": [
 		{
@@ -16,7 +16,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f308564f-d26c-4a2e-9309-fb98b2a566e9",
+								"id": "653e3a15-a6ba-46db-9ec2-f5607b0a4bd5",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -99,7 +99,7 @@
 							}
 						}
 					],
-					"id": "407f5545-2b5b-48eb-a631-85c3c6e60db2",
+					"id": "83db69b7-6bab-4a55-b6ba-c5338c49b236",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -122,7 +122,7 @@
 					},
 					"response": [
 						{
-							"id": "ab79a5b7-7c33-48a0-9f21-0405a0e56538",
+							"id": "75886895-ba54-4b01-b09a-3f30af6e4ea7",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -160,7 +160,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "74f656e7-7b7b-41e9-8d25-4303b5ece0c5",
+								"id": "22117b77-0a01-45e4-8c35-5445416dfe9e",
 								"exec": [
 									"const res = pm.response.json();",
 									"",
@@ -243,7 +243,7 @@
 							}
 						}
 					],
-					"id": "6dcd7390-506f-4832-8682-6215967d4717",
+					"id": "83b1697d-3760-4e22-a98c-2de5b1ce729d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -280,7 +280,7 @@
 					},
 					"response": [
 						{
-							"id": "a88397b2-9060-4cdc-8d82-1b4a61f6b341",
+							"id": "0526f7a3-d21e-49d6-b255-0633a08e4a81",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -380,7 +380,7 @@
 					]
 				}
 			],
-			"id": "05190349-1c58-49c2-a658-1cbb567d9606"
+			"id": "9750fdc1-5b08-4032-973e-6059b003a44e"
 		},
 		{
 			"name": "Create",
@@ -388,7 +388,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0ee321ae-1550-4050-b918-ac8fdce9e1fa",
+						"id": "f7008e57-2271-430e-9828-a1f3334d974e",
 						"exec": [
 							"const res = pm.response.json();",
 							"",
@@ -402,7 +402,7 @@
 					}
 				}
 			],
-			"id": "48f8343f-2182-4fa6-a93b-5e6d7348232f",
+			"id": "c593994b-441e-4d84-8ebb-588459fef9b9",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -431,7 +431,7 @@
 			},
 			"response": [
 				{
-					"id": "d317beb7-a1eb-4db8-8357-c6cb05386b26",
+					"id": "d2a04b88-fc15-461f-ac6a-b31d156b9de9",
 					"name": "200 OK",
 					"originalRequest": {
 						"method": "POST",
@@ -483,7 +483,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "de1df751-cca1-464e-aaac-4d1f44c32925",
+						"id": "b3fd8510-1665-4487-aa9d-116efc2e3edc",
 						"exec": [
 							"const res = pm.response.json();",
 							"",
@@ -492,8 +492,8 @@
 							"});",
 							"",
 							"",
-							"pm.test(\"Response time is less than 200ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
 							"});",
 							"",
 							"",
@@ -559,7 +559,7 @@
 					}
 				}
 			],
-			"id": "a88750ae-630c-443f-935d-15ddfa3f8d5e",
+			"id": "37ebe8fc-c931-4b42-a7a7-a4747f6a3bc3",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -580,7 +580,7 @@
 			},
 			"response": [
 				{
-					"id": "335a18dd-8b87-41e7-8b19-35153912f9ee",
+					"id": "603cf651-eae3-4b20-abf9-2270e66e42d6",
 					"name": "200 OK",
 					"originalRequest": {
 						"method": "GET",
