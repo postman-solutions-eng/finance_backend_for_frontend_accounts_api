@@ -1,0 +1,422 @@
+{
+	"info": {
+		"_postman_id": "f22a0800-853c-4631-b14c-431a73828fc6",
+		"name": "Accounts API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24113219-f22a0800-853c-4631-b14c-431a73828fc6"
+	},
+	"item": [
+		{
+			"name": "accounts",
+			"item": [
+				{
+					"name": "{accountNumber}",
+					"item": [
+						{
+							"name": "statement",
+							"item": [
+								{
+									"name": "Date",
+									"id": "1db02c28-a360-44fd-b75f-8d4203c9a6a5",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/form-urlencoded"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"from\": \"{{$randomDatePast}}\",\n  \"to\": \"{{$randomDateRecent}}\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:accountNumber/statement/date",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":accountNumber",
+												"statement",
+												"date"
+											],
+											"variable": [
+												{
+													"key": "accountNumber",
+													"value": "do deserunt laboris",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Date"
+									},
+									"response": [
+										{
+											"id": "15e5d4c1-1e4a-4ae3-84a2-bc9308ed3afc",
+											"name": "200 OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"from\": \"{{$randomDatePast}}\",\n  \"to\": \"{{$randomDateRecent}}\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/accounts/:accountNumber/statement/date",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"accounts",
+														":accountNumber",
+														"statement",
+														"date"
+													],
+													"variable": [
+														{
+															"key": "accountNumber",
+															"value": "do deserunt laboris",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"_postman_previewtype": "html",
+											"header": [
+												{
+													"disabled": false,
+													"key": "Access-Control-Allow-Origin",
+													"value": "*",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Connection",
+													"value": "close",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Content-Encoding",
+													"value": "gzip",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Date",
+													"value": "Mon, 14 Jun 2021 14:30:25 GMT",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "ETag",
+													"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Server",
+													"value": "nginx",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Transfer-Encoding",
+													"value": "chunked",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Vary",
+													"value": "Accept-Encoding",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "X-RateLimit-Limit",
+													"value": "120",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "X-RateLimit-Remaining",
+													"value": "119",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "X-RateLimit-Reset",
+													"value": "1623681083",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "x-srv-span",
+													"value": "v=1;s=210e5b055e5bd71e",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "x-srv-trace",
+													"value": "v=1;t=d33d68b932344fce",
+													"description": ""
+												},
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"period\": {\n        \"from\": \"{{$randomDatePast}}\",\n        \"to\": \"{{$randomDateRecent}}\"\n    },\n    \"balance\": {\n        \"opening\": {{$randomPrice}},\n        \"closing\": {{$randomPrice}}\n    },\n    \"money\": {\n        \"in\": {{$randomPrice}},\n        \"out\": {{$randomPrice}}\n    },\n    \"transactions\": [\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        }\n    ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Latest",
+									"id": "a699a248-e131-4025-9d0e-76afd3493078",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:accountNumber/statement/latest",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":accountNumber",
+												"statement",
+												"latest"
+											],
+											"variable": [
+												{
+													"key": "accountNumber",
+													"value": "do deserunt laboris",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Latest"
+									},
+									"response": [
+										{
+											"id": "0abc88d0-6c17-41c0-aefc-80bc7961f864",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/accounts/:accountNumber/statement/latest",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"accounts",
+														":accountNumber",
+														"statement",
+														"latest"
+													],
+													"variable": [
+														{
+															"key": "accountNumber",
+															"value": "do deserunt laboris",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"_postman_previewtype": "html",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							],
+							"id": "617fc441-782b-42e1-b239-9277a20045f4"
+						},
+						{
+							"name": "Overview",
+							"id": "8dba6812-47b6-4bcf-9739-d25b48d2c9d2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/accounts/:accountNumber/overview",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts",
+										":accountNumber",
+										"overview"
+									],
+									"variable": [
+										{
+											"key": "accountNumber",
+											"value": "do deserunt laboris",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Overview"
+							},
+							"response": [
+								{
+									"id": "7e0c18aa-0772-4b44-8cd4-fb6d39987e71",
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:accountNumber/overview",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":accountNumber",
+												"overview"
+											],
+											"variable": [
+												{
+													"key": "accountNumber",
+													"value": "do deserunt laboris",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"_postman_previewtype": "html",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"id": "dd0730b5-77db-4b83-9e3a-ec070e52c438"
+				},
+				{
+					"name": "Create",
+					"id": "01c6466c-cbda-4916-a319-e22841bf83d5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"holder\": \"{{customerId}}\",\n  \"type\": \"{{$randomBankAccountName}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/accounts/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"accounts",
+								"create"
+							]
+						},
+						"description": "Create"
+					},
+					"response": [
+						{
+							"id": "e9061e78-1e54-453e-bf0e-0b68061b5509",
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"holder\": \"{{customerId}}\",\n  \"type\": \"{{$randomBankAccountName}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/accounts/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"_postman_previewtype": "html",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"id": "60a08064-49aa-42fd-8228-1d3ee97c5da5"
+		}
+	],
+	"variable": [
+		{
+			"id": "dd4ed7e5-ffd2-4b74-9352-d7e9d6a7f1d0",
+			"key": "baseUrl",
+			"value": "{{url}}",
+			"type": "string"
+		}
+	]
+}
