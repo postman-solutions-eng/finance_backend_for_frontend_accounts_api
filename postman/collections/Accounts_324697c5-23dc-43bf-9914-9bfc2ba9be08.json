@@ -107,9 +107,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/accounts/{{accountNumber}}/statement/latest",
+							"raw": "{{accountsUrl}}/accounts/{{accountNumber}}/statement/latest",
 							"host": [
-								"{{url}}"
+								"{{accountsUrl}}"
 							],
 							"path": [
 								"accounts",
@@ -128,9 +128,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/accounts/{{accountNumber}}/statement/latest",
+									"raw": "{{accountsUrl}}/accounts/{{accountNumber}}/statement/latest",
 									"host": [
-										"{{url}}"
+										"{{accountsUrl}}"
 									],
 									"path": [
 										"accounts",
@@ -266,9 +266,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/accounts/{{accountNumber}}/statement/date",
+							"raw": "{{accountsUrl}}/accounts/{{accountNumber}}/statement/date",
 							"host": [
-								"{{url}}"
+								"{{accountsUrl}}"
 							],
 							"path": [
 								"accounts",
@@ -301,9 +301,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/accounts/{{accountNumber}}/statement/date",
+									"raw": "{{accountsUrl}}/accounts/{{accountNumber}}/statement/date",
 									"host": [
-										"{{url}}"
+										"{{accountsUrl}}"
 									],
 									"path": [
 										"accounts",
@@ -419,9 +419,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/accounts/create",
+					"raw": "{{accountsUrl}}/accounts/create",
 					"host": [
-						"{{url}}"
+						"{{accountsUrl}}"
 					],
 					"path": [
 						"accounts",
@@ -453,9 +453,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/accounts/create",
+							"raw": "{{accountsUrl}}/accounts/create",
 							"host": [
-								"{{url}}"
+								"{{accountsUrl}}"
 							],
 							"path": [
 								"accounts",
@@ -567,9 +567,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/accounts/{{accountNumber}}/overview",
+					"raw": "{{accountsUrl}}/accounts/{{accountNumber}}/overview",
 					"host": [
-						"{{url}}"
+						"{{accountsUrl}}"
 					],
 					"path": [
 						"accounts",
@@ -586,9 +586,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/accounts/{{accountNumber}}/overview",
+							"raw": "{{accountsUrl}}/accounts/{{accountNumber}}/overview",
 							"host": [
-								"{{url}}"
+								"{{accountsUrl}}"
 							],
 							"path": [
 								"accounts",
