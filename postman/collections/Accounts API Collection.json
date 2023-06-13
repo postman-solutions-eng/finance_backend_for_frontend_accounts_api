@@ -17,20 +17,6 @@
 							"item": [
 								{
 									"name": "Date",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "bef9acf3-685f-4620-8709-1f51d8ffa9df",
-												"exec": [
-													"pm.test(\"Status code is 200\", function () {",
-													"    pm.response.to.have.status(200);",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
 									"id": "1db02c28-a360-44fd-b75f-8d4203c9a6a5",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -52,9 +38,9 @@
 											"raw": "{\n  \"from\": \"{{$randomDatePast}}\",\n  \"to\": \"{{$randomDateRecent}}\"\n}"
 										},
 										"url": {
-											"raw": "{{accountsAPI}}/accounts/:accountNumber/statement/date",
+											"raw": "{{accountsUrl}}/accounts/:accountNumber/statement/date",
 											"host": [
-												"{{accountsAPI}}"
+												"{{accountsUrl}}"
 											],
 											"path": [
 												"accounts",
@@ -84,9 +70,9 @@
 													"raw": "{\n  \"from\": \"{{$randomDatePast}}\",\n  \"to\": \"{{$randomDateRecent}}\"\n}"
 												},
 												"url": {
-													"raw": "{{accountsAPI}}/accounts/:accountNumber/statement/date",
+													"raw": "{{accountsUrl}}/accounts/:accountNumber/statement/date",
 													"host": [
-														"{{accountsAPI}}"
+														"{{accountsUrl}}"
 													],
 													"path": [
 														"accounts",
@@ -105,7 +91,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "json",
+											"_postman_previewlanguage": "text",
 											"header": [
 												{
 													"disabled": false,
@@ -187,10 +173,7 @@
 												},
 												{
 													"key": "Content-Type",
-													"name": "Content-Type",
-													"value": "application/json",
-													"description": "",
-													"type": "text"
+													"value": "text/plain"
 												}
 											],
 											"cookie": [],
@@ -200,20 +183,6 @@
 								},
 								{
 									"name": "Latest",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "b247793d-3356-4e25-9c0b-7b3bfd70a17f",
-												"exec": [
-													"pm.test(\"Status code is 200\", function () {",
-													"    pm.response.to.have.status(200);",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
 									"id": "a699a248-e131-4025-9d0e-76afd3493078",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -222,9 +191,9 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{accountsAPI}}/accounts/:accountNumber/statement/latest",
+											"raw": "{{accountsUrl}}/accounts/:accountNumber/statement/latest",
 											"host": [
-												"{{accountsAPI}}"
+												"{{accountsUrl}}"
 											],
 											"path": [
 												"accounts",
@@ -245,14 +214,14 @@
 									"response": [
 										{
 											"id": "0abc88d0-6c17-41c0-aefc-80bc7961f864",
-											"name": "200 OK",
+											"name": "Untitled Example",
 											"originalRequest": {
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "{{accountsAPI}}/accounts/:accountNumber/statement/latest",
+													"raw": "{{accountsUrl}}/accounts/:accountNumber/statement/latest",
 													"host": [
-														"{{accountsAPI}}"
+														"{{accountsUrl}}"
 													],
 													"path": [
 														"accounts",
@@ -288,20 +257,6 @@
 						},
 						{
 							"name": "Overview",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "70c5dd07-ab49-4b5e-8efe-2112e9a30211",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
 							"id": "8dba6812-47b6-4bcf-9739-d25b48d2c9d2",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -310,9 +265,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{accountsAPI}}/accounts/:accountNumber/overview",
+									"raw": "{{accountsUrl}}/accounts/:accountNumber/overview",
 									"host": [
-										"{{accountsAPI}}"
+										"{{accountsUrl}}"
 									],
 									"path": [
 										"accounts",
@@ -332,14 +287,14 @@
 							"response": [
 								{
 									"id": "7e0c18aa-0772-4b44-8cd4-fb6d39987e71",
-									"name": "200 OK",
+									"name": "Untitled Example",
 									"originalRequest": {
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{accountsAPI}}/accounts/:accountNumber/overview",
+											"raw": "{{baseUrl}}/accounts/:accountNumber/overview",
 											"host": [
-												"{{accountsAPI}}"
+												"{{baseUrl}}"
 											],
 											"path": [
 												"accounts",
@@ -374,20 +329,6 @@
 				},
 				{
 					"name": "Create",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "dd137da7-b0c1-4563-b227-55f28269cfea",
-								"exec": [
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.response.to.have.status(201);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
 					"id": "01c6466c-cbda-4916-a319-e22841bf83d5",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -410,9 +351,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{accountsAPI}}/accounts/create",
+							"raw": "{{accountsUrl}}/accounts/create",
 							"host": [
-								"{{accountsAPI}}"
+								"{{accountsUrl}}"
 							],
 							"path": [
 								"accounts",
@@ -424,7 +365,7 @@
 					"response": [
 						{
 							"id": "e9061e78-1e54-453e-bf0e-0b68061b5509",
-							"name": "201 Created",
+							"name": "Untitled Example",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -438,9 +379,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{accountsAPI}}/accounts/create",
+									"raw": "{{accountsUrl}}/accounts/create",
 									"host": [
-										"{{accountsAPI}}"
+										"{{accountsUrl}}"
 									],
 									"path": [
 										"accounts",
@@ -448,16 +389,13 @@
 									]
 								}
 							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
 							"header": [
 								{
 									"key": "Content-Type",
-									"name": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
+									"value": "text/plain"
 								}
 							],
 							"cookie": [],
