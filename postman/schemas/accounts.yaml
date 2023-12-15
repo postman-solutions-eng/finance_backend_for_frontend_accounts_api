@@ -18,6 +18,8 @@ servers:
 paths:
   /accounts/create:
     post:
+      tags:
+        - "account"
       summary: Create
       description: Create
       operationId: create
@@ -46,6 +48,8 @@ paths:
           description: "Internal server error"
   "/accounts/{accountNumber}/overview":
     get:
+      tags:
+        - "account"
       summary: Overview
       description: Overview
       operationId: overview
