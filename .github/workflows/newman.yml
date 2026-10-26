@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+        with:
+          persist-credentials: false
       - uses: matt-ball/newman-action@master
         with:
           collection: postman/collections/Accounts_f01852ad-1e21-4378-a624-15752fff7b6e.json
